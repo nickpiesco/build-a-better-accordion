@@ -1,0 +1,99 @@
+// Variables
+
+$text-color: #444;
+$border-color: rgba(black, 0.1);
+
+// Mixins
+
+@mixin accordion(
+  // Defaults
+  $duration: 0.5s,
+  $easing: ease
+  ) {
+  position: relative; // ...so we can absolutely position the pseudoelement
+  &:after {
+    content: '\25bc'; // ‘Black Down-Pointing Triangle’
+    position: absolute;
+    right: 0.5em;
+    transition: transform $duration $easing;
+  }
+  & + ul {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $duration $easing;
+  }
+  &.list-open {
+    &:after {
+      transform: rotateX(180deg);
+    }
+    & + ul {
+      max-height: 100vh;
+    }
+  }
+}
+
+// SCSS
+
+// Quickie global reset
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: $text-color;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+ul {
+  list-style: none;
+  width: 15em;
+}
+
+button,
+a {
+  display: block;
+  padding: 0.5em;
+  border-bottom: 1px solid $border-color;
+}
+
+// Make a button look like a link
+button {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid $border-color;
+  color: $text-color;
+  font-family: inherit;
+  font-size: 1em;
+  text-align: left;
+  width: 100%;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+a {
+  color: $text-color;
+  text-decoration: none;
+}
+
+.list-toggle {
+  @include accordion;
+}
+
+.main-navigation {
+  margin: 2em;
+}
+
+.league-list {
+  background-color: #ccc;
+}
+
+.division-list {
+  background-color: #ddd;
+}
+
+.team-list {
+  background-color: #eee;
+}

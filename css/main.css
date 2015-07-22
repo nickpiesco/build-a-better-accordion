@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+body {
+  color: #444;
+  font-family: 'Helvetica', 'Arial', sans-serif; }
+
+ul {
+  list-style: none;
+  width: 15em; }
+
+button,
+a {
+  display: block;
+  padding: 0.5em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+
+button {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: #444;
+  font-family: inherit;
+  font-size: 1em;
+  text-align: left;
+  width: 100%; }
+  button:hover {
+    cursor: pointer; }
+
+a {
+  color: #444;
+  text-decoration: none; }
+
+.list-toggle {
+  position: relative; }
+  .list-toggle:after {
+    content: '\25bc';
+    position: absolute;
+    right: 0.5em;
+    transition: transform 0.5s ease; }
+  .list-toggle + ul {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease; }
+  .list-toggle.list-open:after {
+    transform: rotateX(180deg); }
+  .list-toggle.list-open + ul {
+    max-height: 100vh; }
+
+.main-navigation {
+  margin: 2em; }
+
+.league-list {
+  background-color: #ccc; }
+
+.division-list {
+  background-color: #ddd; }
+
+.team-list {
+  background-color: #eee; }
+
+/*# sourceMappingURL=main.css.map */
